@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="qr.png" />
+<meta charset="utf-8">
+<title>Simple QR generator</title>
+</head>
+<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        data = $("#data")[0]
+        code = $("#code")[0]
+        $(window).bind('keydown', function (e) {
+            if (e.ctrlKey && e.keyCode == 13) {
+                v = encodeURIComponent(data.value);
+                code.src = "http://qrcode.kaywa.com/img.php?s=12&d=" + v;
+            }
+        })
+    });    
+    </script>
+
+    <img id="code" alt="Press Ctrl-Enter to generate QR!"><p>
+    <textarea type=text id="data" value="" 
+              rows=10 cols=42></textarea>
+</body>
+</html>
